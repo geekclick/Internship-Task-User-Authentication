@@ -5,7 +5,7 @@ This project is a full stack application built with Vue.js, Node.js, Express, an
 
 ## Setup Instructions
 ### Prerequisites
-Node.js and npm should be installed on your machine. You can download and install them from here.
+Node.js and npm should be installed on your machine. You can download and install them from there website.
 
 #### Installation Steps
 Clone the Repository:
