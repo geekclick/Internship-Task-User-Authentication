@@ -45,7 +45,7 @@ Start the backend server:
 
 Database Setup:
 
-Create `.env` file in the server folder with following data
+Create `.env` file in the server directory with following data
 
 `DATABASE_URL="file:./dev.db"`
 
@@ -67,3 +67,4 @@ This project is licensed under the MIT License.
 - Node.js: Node.js Documentation
 - Express: Express.js Documentation
 - SQLite: SQLite Documentation
+- Prisma: Prisma Documentation
