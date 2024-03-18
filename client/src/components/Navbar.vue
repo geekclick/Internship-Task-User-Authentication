@@ -1,5 +1,12 @@
 <script setup>
+import { computed } from "vue"
 import { RouterLink } from 'vue-router';
+import { logout } from "@/services/auth-services";
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const isLoggedIn = computed(() => localStorage.getItem('token'));
+
 </script>
 <template>
     <header>
@@ -9,7 +16,13 @@ import { RouterLink } from 'vue-router';
                 <div class="text-[2rem] leading-[3rem] tracking-tight font-bold text-black dark:text-white">
                     🏠 Home
                 </div>
-                <div class="flex items-center space-x-4 text-lg font-semibold tracking-tight">
+                <div v-if="isLoggedIn" class="flex items-center space-x-4 text-lg font-semibold tracking-tight">
+                    <RouterLink to="/login" @click="logout(router)"
+                        class="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black">
+                        Log out
+                    </RouterLink>
+                </div>
+                <div v-if="!isLoggedIn" class="flex items-center space-x-4 text-lg font-semibold tracking-tight">
                     <RouterLink to="/login"
                         class="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black">
                         Log

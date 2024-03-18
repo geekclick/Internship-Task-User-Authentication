@@ -1,7 +1,6 @@
 <script setup>
 import {
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -13,7 +12,9 @@ import Input from '@/components/ui/input/Input.vue';
 import { loginSchema } from '@/schemas/authSchema';
 import { useRouter } from 'vue-router';
 import { handleLogin } from '@/services/auth-services';
+import { useAuthStore } from "@/stores/AuthStore";
 
+const authStore = useAuthStore()
 const router = useRouter();
 
 
@@ -22,7 +23,7 @@ const form = useForm({
 })
 
 const onSubmit = form.handleSubmit((values) => {
-    handleLogin(values, router)
+    handleLogin(values, authStore, router)
 })
 
 </script>
@@ -76,24 +77,3 @@ const onSubmit = form.handleSubmit((values) => {
         </div>
     </div>
 </template>
-
-
-
-<!-- <form action="">
-    <div class="mt-8 space-y-8">
-        <div class="space-y-6">
-            <input
-                class="w-full bg-transparent text-gray-600 dark:text-white dark:border-gray-700 rounded-md border border-gray-300 px-3 py-2 text-sm placeholder-gray-600 invalid:border-red-500 dark:placeholder-gray-300"
-                placeholder="Your Email" type="email" name="email" id="email" />
-
-            <input
-                class="w-full bg-transparent text-gray-600 dark:text-white dark:border-gray-700 rounded-md border border-gray-300 px-3 py-2 text-sm placeholder-gray-600 invalid:border-red-500 dark:placeholder-gray-300"
-                placeholder="Your Password" type="password" name="password" id="password" />
-        </div>
-
-        <button
-            class="h-9 px-3 w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 transition duration-500 rounded-md text-white">
-            Signin
-        </button>
-    </div>
-</form> -->
